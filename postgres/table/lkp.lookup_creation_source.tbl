@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS lkp.lookup_creation_source (
+    creation_source_id SERIAL PRIMARY KEY,
+    source_name VARCHAR(255) UNIQUE NOT NULL, -- e.g., 'Mobile App', 'Outlook Sync'
+    is_active BOOLEAN DEFAULT TRUE NOT NULL
+);

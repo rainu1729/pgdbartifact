@@ -1,0 +1,15 @@
+CREATE TABLE IF NOT EXISTS crm.client_contacts (
+    client_contact_id   SERIAL      PRIMARY KEY,
+    client_id           INT         NOT NULL,
+    contact_id          INT         NOT NULL,
+    is_primary          BOOLEAN     DEFAULT FALSE NOT NULL,
+    relationship_notes  TEXT,
+    created_at          TIMESTAMP   DEFAULT CURRENT_TIMESTAMP,
+    updated_at          TIMESTAMP   DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (client_id) REFERENCES crm.clients(client_id),
+    FOREIGN KEY (contact_id) REFERENCES crm.contacts(contact_id),
+    UNIQUE (client_id, contact_id)
+);
+
+CREATE INDEX IF NOT EXISTS crm.idx_client_contacts_client_id ON crm.client_contacts (client_id);
+CREATE INDEX IF NOT EXISTS crm.idx_client_contacts_contact_id ON crm.client_contacts (contact_id);

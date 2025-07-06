@@ -1,0 +1,12 @@
+CREATE TABLE IF NOT EXISTS meeting_attendees_associate (
+    attendee_id SERIAL PRIMARY KEY,
+    meeting_id INT NOT NULL REFERENCES meetings(meeting_id) ON DELETE CASCADE,
+    associate_id INT NOT NULL REFERENCES associates(associate_id) ON DELETE CASCADE,
+    role VARCHAR(255) NOT NULL, -- e.g., 'Speaker', 'Participant'
+    attendance_status BOOLEAN DEFAULT FALSE NOT NULL, -- TRUE if attended, FALSE otherwise
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE INDEX IF NOT EXISTS crm.idx_meeting_attendees_associate_meeting_id ON crm.meeting_attendees_associate (meeting_id);
+CREATE INDEX IF NOT EXISTS crm.idx_meeting_attendees_associate_associate_id ON crm.meeting_attendees_associate (associate_id);

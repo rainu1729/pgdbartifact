@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS lkp.lookup_opportunity_stage (
+    opportunity_stage_id SERIAL PRIMARY KEY,
+    stage_name VARCHAR(255) UNIQUE NOT NULL,
+    probability INTEGER NOT NULL CHECK (probability >= 0 AND probability <= 100),
+    order_index INTEGER UNIQUE NOT NULL, -- For sales pipeline order
+    is_closed BOOLEAN DEFAULT FALSE NOT NULL, -- Indicates if this is a final stage (Won/Lost)
+    is_won BOOLEAN DEFAULT FALSE NOT NULL, -- Specifically indicates 'Closed Won'
+    is_active BOOLEAN DEFAULT TRUE NOT NULL
+);

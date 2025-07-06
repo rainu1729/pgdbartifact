@@ -1,0 +1,14 @@
+CREATE TABLE IF NOT EXISTS notes (
+    note_id SERIAL PRIMARY KEY,
+    note_text TEXT NOT NULL,
+    related_entity_id INT, -- Foreign key to relate to other entities
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE INDEX IF NOT EXISTS crm.idx_notes_related_to_client_id ON crm.notes (related_to_client_id);
+CREATE INDEX IF NOT EXISTS crm.idx_notes_related_to_contact_id ON crm.notes (related_to_contact_id);
+CREATE INDEX IF NOT EXISTS crm.idx_notes_related_to_opportunity_id ON crm.notes (related_to_opportunity_id);
+CREATE INDEX IF NOT EXISTS crm.idx_notes_related_to_meeting_id ON crm.notes (related_to_meeting_id);
+CREATE INDEX IF NOT EXISTS crm.idx_notes_related_to_associate_id ON crm.notes (related_to_associate_id);
+CREATE INDEX IF NOT EXISTS crm.idx_notes_created_at ON crm.notes (created_at); -- Notes are often viewed chronologically

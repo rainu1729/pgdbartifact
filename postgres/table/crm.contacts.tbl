@@ -1,0 +1,24 @@
+CREATE TABLE IF NOT EXISTS crm.contacts (
+    contact_id          SERIAL PRIMARY KEY,
+    first_name          VARCHAR(255)        NOT NULL,
+    last_name           VARCHAR(255)        NOT NULL,
+    email               VARCHAR(255) UNIQUE, -- Allow NULL, but enforce uniqueness if not null
+    phone_mobile        VARCHAR(50),
+    phone_office        VARCHAR(50),
+    job_title           VARCHAR(100),
+    department          VARCHAR(100),
+    address_line1       VARCHAR(255),
+    address_line2       VARCHAR(255),
+    city                VARCHAR(100),
+    state_province      VARCHAR(100),
+    postal_code         VARCHAR(20),
+    country             VARCHAR(100),
+    contact_status_id   INTEGER             NOT NULL REFERENCES crm.lookup_contact_status(contact_status_id),
+    description         TEXT,
+    created_at          TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL,
+    created_by          INTEGER REFERENCES crm.associates(associate_id) ON DELETE SET NULL,
+    updated_at          TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL,
+    updated_by          INTEGER REFERENCES crm.associates(associate_id) ON DELETE SET NULL
+);
+
+CREATE INDEX IF NOT EXISTS crm.idx_contacts_contact_status_id ON crm.contacts (contact_status_id);

@@ -1,0 +1,27 @@
+CREATE TABLE IF NOT EXISTS crm.clients (
+    client_id                  SERIAL PRIMARY KEY,
+    client_name                VARCHAR(255) UNIQUE NOT NULL,
+    website                    VARCHAR(255),
+    phone_number               VARCHAR(50),
+    email_address              VARCHAR(255),
+    address_line1              VARCHAR(255),
+    address_line2              VARCHAR(255),
+    city                       VARCHAR(100),
+    state_province             VARCHAR(100),
+    postal_code                VARCHAR(20),
+    country                    VARCHAR(100),
+    industry_id                INTEGER REFERENCES crm.lookup_industry(industry_id) ON DELETE SET NULL,
+    annual_revenue             NUMERIC(18, 2),
+    number_of_employees        INTEGER,
+    client_status_id           INTEGER REFERENCES crm.lookup_client_status(client_status_id) NOT NULL,
+    relationship_manager_id    INTEGER REFERENCES crm.associates(associate_id) ON DELETE SET NULL,
+    description                TEXT,
+    created_at                 TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL,
+    created_by                 INTEGER REFERENCES crm.associates(associate_id) ON DELETE SET NULL,
+    updated_at                 TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL,
+    updated_by                 INTEGER REFERENCES crm.associates(associate_id) ON DELETE SET NULL
+);
+
+CREATE INDEX IF NOT EXISTS crm.idx_clients_client_status_id ON crm.clients (client_status_id);
+CREATE INDEX IF NOT EXISTS crm.idx_clients_relationship_manager_id ON crm.clients (relationship_manager_id);
+CREATE INDEX IF NOT EXISTS crm.idx_clients_industry_id ON crm.clients (industry_id);

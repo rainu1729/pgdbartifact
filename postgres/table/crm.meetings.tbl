@@ -1,0 +1,14 @@
+CREATE TABLE IF NOT EXISTS meetings (
+    meeting_id SERIAL PRIMARY KEY,
+    subject VARCHAR(255) NOT NULL,
+    meeting_datetime TIMESTAMP NOT NULL,
+    duration INTERVAL NOT NULL,
+    initiator_id INT NOT NULL,
+    CONSTRAINT fk_initiator FOREIGN KEY (initiator_id) REFERENCES client_contacts(contact_id),
+    CHECK (initiator_id IS NOT NULL)
+);
+
+CREATE INDEX IF NOT EXISTS crm.idx_meetings_meeting_datetime ON crm.meetings (meeting_datetime);
+CREATE INDEX IF NOT EXISTS crm.idx_meetings_related_to_client_id ON crm.meetings (related_to_client_id);
+CREATE INDEX IF NOT EXISTS crm.idx_meetings_related_to_opportunity_id ON crm.meetings (related_to_opportunity_id);
+CREATE INDEX IF NOT EXISTS crm.idx_meetings_creation_source_id ON crm.meetings (creation_source_id);

@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS lkp.lookup_activity_status (
+    activity_status_id SERIAL PRIMARY KEY,
+    status_name VARCHAR(255) UNIQUE NOT NULL, -- e.g., 'Completed', 'Pending', 'In Progress'
+    is_active BOOLEAN DEFAULT TRUE NOT NULL
+);

@@ -1,0 +1,16 @@
+CREATE TABLE IF NOT EXISTS crm.associates (
+    associate_id     SERIAL                          PRIMARY KEY,
+    first_name       VARCHAR(255)                    NOT NULL,
+    last_name        VARCHAR(255)                    NOT NULL,
+    email            VARCHAR(255)                    UNIQUE NOT NULL,
+    phone_number     VARCHAR(50),
+    job_title        VARCHAR(100),
+    department       VARCHAR(100),
+    is_active        BOOLEAN                         DEFAULT TRUE NOT NULL,
+    hire_date        DATE,
+    termination_date DATE,
+    created_at       TIMESTAMP WITH TIME ZONE        DEFAULT NOW() NOT NULL,
+    created_by       INTEGER                         REFERENCES crm.users(user_id) ON DELETE SET NULL,
+    updated_at       TIMESTAMP WITH TIME ZONE        DEFAULT NOW() NOT NULL,
+    updated_by       INTEGER                         REFERENCES crm.users(user_id) ON DELETE SET NULL
+);
