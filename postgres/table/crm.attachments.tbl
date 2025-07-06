@@ -1,15 +1,14 @@
 CREATE TABLE IF NOT EXISTS crm.attachments (
-    attachment_id       SERIAL          PRIMARY KEY,
-    file_name           VARCHAR(255)    NOT NULL,
-    storage_path        VARCHAR(255)    NOT NULL,
-    related_entity_id   INT             NOT NULL, -- This could reference various entities
-    created_at          TIMESTAMP       DEFAULT CURRENT_TIMESTAMP,
-    updated_at          TIMESTAMP       DEFAULT CURRENT_TIMESTAMP
+    attachment_id      SERIAL         PRIMARY KEY,
+    file_name          VARCHAR(255)   NOT NULL,
+    storage_path       VARCHAR(255)   NOT NULL,
+    related_entity_id  INT            NOT NULL, -- This could reference various entities
+    created_at         TIMESTAMP      DEFAULT CURRENT_TIMESTAMP,
+    updated_at         TIMESTAMP      DEFAULT CURRENT_TIMESTAMP
 );
 
-
-CREATE INDEX IF NOT EXISTS crm.idx_attachments_related_to_client_id ON crm.attachments (related_to_client_id);
-CREATE INDEX IF NOT EXISTS crm.idx_attachments_related_to_contact_id ON crm.attachments (related_to_contact_id);
+CREATE INDEX IF NOT EXISTS crm.idx_attachments_related_to_client_id      ON crm.attachments (related_to_client_id);
+CREATE INDEX IF NOT EXISTS crm.idx_attachments_related_to_contact_id     ON crm.attachments (related_to_contact_id);
 CREATE INDEX IF NOT EXISTS crm.idx_attachments_related_to_opportunity_id ON crm.attachments (related_to_opportunity_id);
-CREATE INDEX IF NOT EXISTS crm.idx_attachments_related_to_meeting_id ON crm.attachments (related_to_meeting_id);
-CREATE INDEX IF NOT EXISTS crm.idx_attachments_related_to_associate_id ON crm.attachments (related_to_associate_id);
+CREATE INDEX IF NOT EXISTS crm.idx_attachments_related_to_meeting_id     ON crm.attachments (related_to_meeting_id);
+CREATE INDEX IF NOT EXISTS crm.idx_attachments_related_to_associate_id   ON crm.attachments (related_to_associate_id);

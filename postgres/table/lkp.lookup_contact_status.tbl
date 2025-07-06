@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS lkp.lookup_contact_status (
-    contact_status_id SERIAL PRIMARY KEY,
-    status_name VARCHAR(255) UNIQUE NOT NULL,
-    is_active BOOLEAN DEFAULT TRUE NOT NULL
+    contact_status_id   SERIAL          PRIMARY KEY,
+    status_name         VARCHAR(255)    UNIQUE NOT NULL,
+    is_active           BOOLEAN         DEFAULT TRUE NOT NULL
 );

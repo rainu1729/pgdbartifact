@@ -1,14 +1,14 @@
 -- This file contains the SQL definition for the "users" table.
 
-CREATE TABLE IF NOT EXISTS users (
-    user_id SERIAL PRIMARY KEY,
-    associate_id INTEGER UNIQUE REFERENCES associates(associate_id) ON DELETE CASCADE NOT NULL, -- If associate is deleted, their user record should be too.
-    username VARCHAR(255) UNIQUE NOT NULL, -- Likely same as associate.email
-    password_hash VARCHAR(255) NOT NULL, -- Stores the hashed password
-    last_login_at TIMESTAMP WITH TIME ZONE,
-    is_active BOOLEAN DEFAULT TRUE NOT NULL,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL,
-    created_by INTEGER REFERENCES users(user_id) ON DELETE SET NULL, -- Self-referencing FK
-    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL,
-    updated_by INTEGER REFERENCES users(user_id) ON DELETE SET NULL  -- Self-referencing FK
+CREATE TABLE IF NOT EXISTS crm.users (
+    user_id         SERIAL                    PRIMARY KEY,
+    associate_id    INTEGER                   UNIQUE REFERENCES crm.associates(associate_id) ON DELETE CASCADE NOT NULL, -- If associate is deleted, their user record should be too.
+    username        VARCHAR(255)              UNIQUE NOT NULL, -- Likely same as associate.email
+    password_hash   VARCHAR(255)              NOT NULL, -- Stores the hashed password
+    last_login_at   TIMESTAMP WITH TIME ZONE,
+    is_active       BOOLEAN                   DEFAULT TRUE NOT NULL,
+    created_at      TIMESTAMP WITH TIME ZONE  DEFAULT NOW() NOT NULL,
+    created_by      INTEGER                   REFERENCES crm.users(user_id) ON DELETE SET NULL, -- Self-referencing FK
+    updated_at      TIMESTAMP WITH TIME ZONE  DEFAULT NOW() NOT NULL,
+    updated_by      INTEGER                   REFERENCES crm.users(user_id) ON DELETE SET NULL  -- Self-referencing FK
 );
