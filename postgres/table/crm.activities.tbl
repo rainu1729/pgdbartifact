@@ -7,11 +7,3 @@ CREATE TABLE IF NOT EXISTS crm.activities (
     created_at          TIMESTAMP        DEFAULT CURRENT_TIMESTAMP,
     updated_at          TIMESTAMP        DEFAULT CURRENT_TIMESTAMP
 );
-
-CREATE INDEX IF NOT EXISTS crm.idx_activities_activity_type_id         ON crm.activities (activity_type_id);
-CREATE INDEX IF NOT EXISTS crm.idx_activities_status_id                ON crm.activities (status_id);
-CREATE INDEX IF NOT EXISTS crm.idx_activities_assigned_to_id           ON crm.activities (assigned_to_id);
-CREATE INDEX IF NOT EXISTS crm.idx_activities_due_date                 ON crm.activities (due_date);
-CREATE INDEX IF NOT EXISTS crm.idx_activities_related_to_client_id     ON crm.activities (related_to_client_id);
-CREATE INDEX IF NOT EXISTS crm.idx_activities_related_to_contact_id    ON crm.activities (related_to_contact_id);
-CREATE INDEX IF NOT EXISTS crm.idx_activities_related_to_opportunity_id ON crm.activities (related_to_opportunity_id);

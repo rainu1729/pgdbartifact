@@ -10,6 +10,3 @@ CREATE TABLE IF NOT EXISTS crm.client_contacts (
     FOREIGN KEY (contact_id) REFERENCES crm.contacts(contact_id),
     UNIQUE (client_id, contact_id)
 );
-
-CREATE INDEX IF NOT EXISTS crm.idx_client_contacts_client_id  ON crm.client_contacts (client_id);
-CREATE INDEX IF NOT EXISTS crm.idx_client_contacts_contact_id ON crm.client_contacts (contact_id);

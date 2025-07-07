@@ -6,9 +6,3 @@ CREATE TABLE IF NOT EXISTS crm.attachments (
     created_at         TIMESTAMP      DEFAULT CURRENT_TIMESTAMP,
     updated_at         TIMESTAMP      DEFAULT CURRENT_TIMESTAMP
 );
-
-CREATE INDEX IF NOT EXISTS crm.idx_attachments_related_to_client_id      ON crm.attachments (related_to_client_id);
-CREATE INDEX IF NOT EXISTS crm.idx_attachments_related_to_contact_id     ON crm.attachments (related_to_contact_id);
-CREATE INDEX IF NOT EXISTS crm.idx_attachments_related_to_opportunity_id ON crm.attachments (related_to_opportunity_id);
-CREATE INDEX IF NOT EXISTS crm.idx_attachments_related_to_meeting_id     ON crm.attachments (related_to_meeting_id);
-CREATE INDEX IF NOT EXISTS crm.idx_attachments_related_to_associate_id   ON crm.attachments (related_to_associate_id);

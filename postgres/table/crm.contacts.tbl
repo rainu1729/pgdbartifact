@@ -13,12 +13,10 @@ CREATE TABLE IF NOT EXISTS crm.contacts (
     state_province      VARCHAR(100),
     postal_code         VARCHAR(20),
     country             VARCHAR(100),
-    contact_status_id   INTEGER                   NOT NULL REFERENCES crm.lookup_contact_status(contact_status_id),
+    contact_status_id   INTEGER                   NOT NULL REFERENCES lkp.lookup_contact_status(contact_status_id),
     description         TEXT,
     created_at          TIMESTAMP WITH TIME ZONE  DEFAULT NOW() NOT NULL,
-    created_by          INTEGER                   REFERENCES crm.associates(associate_id) ON DELETE SET NULL,
+    created_by          INTEGER                   REFERENCES crm.users(user_id) ON DELETE SET NULL,
     updated_at          TIMESTAMP WITH TIME ZONE  DEFAULT NOW() NOT NULL,
-    updated_by          INTEGER                   REFERENCES crm.associates(associate_id) ON DELETE SET NULL
+    updated_by          INTEGER                   REFERENCES crm.users(user_id) ON DELETE SET NULL
 );
-
-CREATE INDEX IF NOT EXISTS crm.idx_contacts_contact_status_id ON crm.contacts (contact_status_id);

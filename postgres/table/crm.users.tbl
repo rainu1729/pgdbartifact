@@ -8,7 +8,4 @@ CREATE TABLE IF NOT EXISTS crm.users (
     last_login_at   TIMESTAMP WITH TIME ZONE,
     is_active       BOOLEAN                   DEFAULT TRUE NOT NULL,
     created_at      TIMESTAMP WITH TIME ZONE  DEFAULT NOW() NOT NULL,
-    created_by      INTEGER                   REFERENCES crm.users(user_id) ON DELETE SET NULL, -- Self-referencing FK
-    updated_at      TIMESTAMP WITH TIME ZONE  DEFAULT NOW() NOT NULL,
-    updated_by      INTEGER                   REFERENCES crm.users(user_id) ON DELETE SET NULL  -- Self-referencing FK
-);
+    updated_at      TIMESTAMP WITH TIME ZONE  DEFAULT NOW() NOT NULL);

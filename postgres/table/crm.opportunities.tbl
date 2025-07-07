@@ -9,8 +9,3 @@ CREATE TABLE IF NOT EXISTS crm.opportunities (
     updated_at         TIMESTAMP       DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS crm.idx_opportunities_client_id      ON crm.opportunities (client_id);
-CREATE INDEX IF NOT EXISTS crm.idx_opportunities_stage_id       ON crm.opportunities (stage_id);
-CREATE INDEX IF NOT EXISTS crm.idx_opportunities_owner_id       ON crm.opportunities (owner_id);
-CREATE INDEX IF NOT EXISTS crm.idx_opportunities_lead_source_id ON crm.opportunities (lead_source_id);
-CREATE INDEX IF NOT EXISTS crm.idx_opportunities_close_date     ON crm.opportunities (close_date);
