@@ -1,3 +1,4 @@
+\echo 'Create table crm.meetings'
 CREATE TABLE IF NOT EXISTS crm.meetings (
     meeting_id         SERIAL          PRIMARY KEY,
     subject            VARCHAR(255)    NOT NULL,

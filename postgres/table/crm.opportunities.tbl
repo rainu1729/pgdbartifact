@@ -1,3 +1,4 @@
+\echo 'Create table crm.opportunities'
 CREATE TABLE IF NOT EXISTS crm.opportunities (
     opportunity_id     SERIAL          PRIMARY KEY,
     opportunity_name   VARCHAR(255)    NOT NULL,

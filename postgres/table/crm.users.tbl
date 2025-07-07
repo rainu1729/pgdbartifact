@@ -1,5 +1,4 @@
--- This file contains the SQL definition for the "users" table.
-
+\echo 'Create table crm.users'
 CREATE TABLE IF NOT EXISTS crm.users (
     user_id         SERIAL                    PRIMARY KEY,
     associate_id    INTEGER                   UNIQUE REFERENCES crm.associates(associate_id) ON DELETE CASCADE NOT NULL, -- If associate is deleted, their user record should be too.

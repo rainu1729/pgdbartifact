@@ -1,3 +1,5 @@
+\echo 'Create table crm.activities'
+
 CREATE TABLE IF NOT EXISTS crm.activities (
     activity_id         SERIAL           PRIMARY KEY,
     activity_type       VARCHAR(255)     NOT NULL, -- e.g., 'Call', 'Email', 'Meeting'

@@ -1,3 +1,4 @@
+\echo 'Create table lkp.lookup_priority'
 CREATE TABLE IF NOT EXISTS lkp.lookup_priority (
     priority_id     SERIAL          PRIMARY KEY,
     priority_name   VARCHAR(255)    UNIQUE NOT NULL, -- e.g., 'High', 'Medium'

@@ -1,3 +1,4 @@
+\echo 'Create table crm.attachments'
 CREATE TABLE IF NOT EXISTS crm.attachments (
     attachment_id      SERIAL         PRIMARY KEY,
     file_name          VARCHAR(255)   NOT NULL,

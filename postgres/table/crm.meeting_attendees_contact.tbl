@@ -1,6 +1,4 @@
 \echo 'Create table crm.meeting_attendees_contact'
-
-
 CREATE TABLE IF NOT EXISTS crm.meeting_attendees_contact (
     attendee_id        SERIAL          PRIMARY KEY,
     meeting_id         INT             NOT NULL REFERENCES crm.meetings(meeting_id) ON DELETE CASCADE,

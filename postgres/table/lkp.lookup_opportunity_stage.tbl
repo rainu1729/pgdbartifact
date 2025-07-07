@@ -1,3 +1,4 @@
+\echo 'Create table lkp.lookup_opportunity_stage'
 CREATE TABLE IF NOT EXISTS lkp.lookup_opportunity_stage (
     opportunity_stage_id   SERIAL          PRIMARY KEY,
     stage_name             VARCHAR(255)    UNIQUE NOT NULL,

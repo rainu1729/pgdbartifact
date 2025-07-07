@@ -1,3 +1,4 @@
+\echo 'Create table crm.notes'
 CREATE TABLE IF NOT EXISTS crm.notes (
     note_id            SERIAL          PRIMARY KEY,
     note_text          TEXT            NOT NULL,
